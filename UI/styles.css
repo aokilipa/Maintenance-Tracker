@@ -92,3 +92,7 @@ a {
 .header {
     height: 20px;
 }
+
+input.txt-center {
+    text-align: center;
+}
