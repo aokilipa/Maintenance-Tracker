@@ -1,0 +1,144 @@
+
+.grid-container {
+    padding: 10px;
+    display: grid;
+    grid-gap: 10px;
+    background-color: ;
+    bottom: 0;
+    position: relative;
+    grid-template-areas: 'header header header header header header'
+        'menu clearfix main main main main'
+        'footer footer footer footer footer footer';
+    grid-template-columns: repeat(12, 1fr);
+    
+    
+}
+.grid-container > div{
+    padding: 14px;
+    background-color: #fcfcfc;
+}
+
+.top-bar {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    padding: 20px 40px 20px;
+    background-color: #db4141;
+    width: 100%;
+    top: 0;
+    margin: 0;
+    color: white;
+    font-family: sans-serif;
+}
+.top-bar > div:nth-child(2){
+    margin-left: auto;
+}
+
+.clearfix {
+    content: "";
+    clear: both;
+    display: flex;
+    padding:0px ;
+    
+    grid-column: span 1;
+}
+
+.header {
+    display: flex;
+    grid-area: header;
+    height: 40px;
+    
+}
+h2{
+    text-align: center;
+}
+
+.menu {
+    grid-area: menu;
+    grid-column: span 1;
+}
+
+.main {
+    grid-area: main;
+    grid-column: span 11;
+}
+
+.footer {
+    grid-area: footer;
+    grid-column: span 12;
+}
+
+label {
+    width: 100%;
+}
+
+.sidebar {
+    width: 200px;
+}
+
+.item1 {
+    padding: 4px;
+}
+
+
+a:link, a:visited {
+    color: white;
+    text-align: center;
+    display: inline-flex;
+    padding: 4px;
+}
+a:hover, a:active {
+    color: #888585;
+}
+.tb-link > a:before {
+    background-color: #dadada;
+}
+
+.tb-link {
+    text-decoration: none;
+}
+
+.side-item a{
+    color: #db4141;
+    padding: 16px;
+    text-decoration: none;
+    display: flex;
+    text-align: center;
+}
+.side-item a:hover,a:active{
+    color: black;
+    background-color: #ddd;
+    text-align: center;
+}
+
+.side-item {
+    text-align: center;
+}
+
+.side-link {
+    text-align: center;
+}
+
+.text-link {
+    text-align: center;
+}
+
+header {
+    display: flex;
+    background-color: #db4141;
+    grid-column: span 12;
+    padding: 14px;
+    color: white;
+    font-family: sans-serif;
+}
+header > div:nth-child(2){
+    margin-left: auto;
+}
+
+footer {
+    grid-column: span 12;
+}
+
+.text-center {
+    text-align: center;
+}
