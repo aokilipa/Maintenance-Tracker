@@ -99,3 +99,56 @@ a {
 input.txt-center {
     text-align: center;
 }
+
+.category {
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 0;
+    color: #9A9A9A;
+}
+
+.card {
+    border-radius: 6px;
+    box-shadow: 0 2px 2px rgba(204,197,185,0.5);
+    background-color: #FFFFFF;
+    color: #252422;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.content {
+    padding: 15px 15px 10px 15px;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-spacing: 0;
+    border-spacing: 0;
+}
+table{
+    display: table;
+    border-color: grey;
+    border-collapse: separate;
+}
+
+.table-striped tr:nth-child(even){
+    background-color: rgba(201, 76, 76, 0.03);
+    
+}
+td{
+    padding: 8px;
+}
+th{
+    background-color: #c94c4c;
+    padding: 8px;
+    color: white;
+}
+tr:hover{
+    background-color: #fff1f1;
+    
+}
+
+.float-right {
+    float: right;
+}
