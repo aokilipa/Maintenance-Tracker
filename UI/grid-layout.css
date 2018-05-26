@@ -39,7 +39,6 @@
     clear: both;
     display: flex;
     padding:0px ;
-    
     grid-column: span 1;
 }
 
@@ -119,17 +118,18 @@ a:hover, a:active {
     text-align: center;
 }
 
-.text-link {
-    text-align: center;
-}
+
 
 header {
     display: flex;
-    background-color: #db4141;
+    background-color: #c94c4c;
     grid-column: span 12;
     padding: 14px;
     color: white;
     font-family: sans-serif;
+}
+header a{
+    text-decoration: none;
 }
 header > div:nth-child(2){
     margin-left: auto;
