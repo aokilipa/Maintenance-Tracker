@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
     <!--link rel="stylesheet" type="text/css" media="screen" href="grid-layout.css"-->
-    <script src="main.js"></script>
+
 </head>
 
 <body>
@@ -18,7 +18,7 @@
         <div class="item"><a class="tb-link" href="#">View Request</a></div>
         <div class="item"><a class="tb-link" href="#">Logout</a></div>
     </div-->
-   
+
 
 
     <div class="flex-container">
@@ -29,7 +29,7 @@
         <div class="flex-sidebar">
             <div class="container content">
                 <h1>Dashboard</h1>
-                
+
             </div>
             <hr>
             <div class="container content">
@@ -41,7 +41,8 @@
             <nav>
                 <ul>
                     <li><a class="active" href="#">Requests</a></li>
-                    <li><a class="" href="#">users</a></li>
+                    <li><a class="" href="#">Resolve issues</a></li>
+                    <li><a class="" href="#">Users</a></li>
                     <li><a class="" href="#">Logout</a></li>
                 </ul>
             </nav>
@@ -51,9 +52,9 @@
 
         <!--PAGE CONTENT-->
         <div class="flex-content ">
-            
+
             <header class="flex-header">
-            <span>Maintenance Tracker</span> 
+                <span>Maintenance Tracker</span>
                 <div class="menu-header">
                     <a class="" href="#">+ </a>
                     <a class="" href="#">Logout</a>
@@ -93,7 +94,23 @@
                                     <td>25/05/2018</td>
                                     <td>John Doe</td>
                                     <td>Repair</td>
-                                    <td> View Details</td>
+                                    <td> 
+                                        <button id="btn-detail" class="tb-btn btn-info">View Details</button>
+                                        <div id="vd-modal" class="modal">
+                                            <div class="modal-content animate">
+                                                <div class="modal-header"><span class="close" title="Close Modal">&times;</span>
+                                                    <h3>Maintenance Request Details</h3>
+                                                </div>
+                                                <div class="modal-body">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur id, animi adipisci tempora repellat dolore ea, tenetur itaque quas facilis quos assumenda laborum dolores! Dolore eius explicabo facilis eum corrupti.</div>
+
+                                                <div class="container modal-footer">
+                                                    <button id="approve" class="btn btn-success" onclick=""> Approve</button>
+                                                    <button id="reject" class="btn btn-danger" onclick=""> Reject</button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </td>
                                     <td>Pending</td>
                                 </tr>
                                 <tr>
@@ -101,7 +118,21 @@
                                     <td>25/05/2018</td>
                                     <td>Alex Doe</td>
                                     <td>Maintenance</td>
-                                    <td>View Details</td>
+                                    <td><button id="btn-detail" class="tb-btn btn-info">View Details</button>
+                                        <div id="vd-modal" class="modal">
+                                            <div class="modal-content animate">
+                                                <div class="modal-header"><span class="close" title="Close Modal">&times;</span>
+                                                    <h3>Maintenance Request Details</h3>
+                                                </div>
+                                                <div class="modal-body">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur id, animi adipisci tempora repellat dolore ea, tenetur itaque quas facilis quos assumenda laborum dolores! Dolore eius explicabo facilis eum corrupti.</div>
+
+                                                <div class="container modal-footer">
+                                                    <button id="approve" class="btn btn-success" onclick=""> Approve</button>
+                                                    <button id="reject" class="btn btn-danger" onclick=""> Reject</button>
+                                                </div>
+
+                                            </div>
+                                        </div></td>
                                     <td>Approved</td>
                                 </tr>
                                 <tr>
@@ -109,7 +140,21 @@
                                     <td>24/05/2018</td>
                                     <td>John Doe</td>
                                     <td>Maintenance</td>
-                                    <td>View Details</td>
+                                    <td><button id="btn-detail" class="tb-btn btn-info">View Details</button>
+                                        <div id="vd-modal" class="modal">
+                                            <div class="modal-content animate">
+                                                <div class="modal-header"><span class="close" title="Close Modal">&times;</span>
+                                                    <h3>Maintenance Request Details</h3>
+                                                </div>
+                                                <div class="modal-body">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur id, animi adipisci tempora repellat dolore ea, tenetur itaque quas facilis quos assumenda laborum dolores! Dolore eius explicabo facilis eum corrupti.</div>
+
+                                                <div class="container modal-footer">
+                                                    <button id="approve" class="btn btn-success" onclick=""> Approve</button>
+                                                    <button id="reject" class="btn btn-danger" onclick=""> Reject</button>
+                                                </div>
+
+                                            </div>
+                                        </div></td>
                                     <td>Rejected</td>
                                 </tr>
                                 <tr>
@@ -117,7 +162,21 @@
                                     <td>23/05/2018</td>
                                     <td>Mary Doe</td>
                                     <td>Repair</td>
-                                    <td>View Details</td>
+                                    <td><button id="btn-detail" class="tb-btn btn-info">View Details</button>
+                                        <div id="vd-modal" class="modal">
+                                            <div class="modal-content animate">
+                                                <div class="modal-header"><span class="close" title="Close Modal">&times;</span>
+                                                    <h3>Maintenance Request Details</h3>
+                                                </div>
+                                                <div class="modal-body">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur id, animi adipisci tempora repellat dolore ea, tenetur itaque quas facilis quos assumenda laborum dolores! Dolore eius explicabo facilis eum corrupti.</div>
+
+                                                <div class="container modal-footer">
+                                                    <button id="approve" class="btn btn-success" onclick=""> Approve</button>
+                                                    <button id="reject" class="btn btn-danger" onclick=""> Reject</button>
+                                                </div>
+
+                                            </div>
+                                        </div></td>
                                     <td>Approved</td>
                                 </tr>
                                 <tr>
@@ -125,7 +184,21 @@
                                     <td>22/05/2018</td>
                                     <td>James Doe</td>
                                     <td>Repair</td>
-                                    <td>View Details</td>
+                                    <td><button id="btn-detail" class="tb-btn btn-info">View Details</button>
+                                        <div id="vd-modal" class="modal">
+                                            <div class="modal-content animate">
+                                                <div class="modal-header"><span class="close" title="Close Modal">&times;</span>
+                                                    <h3>Maintenance Request Details</h3>
+                                                </div>
+                                                <div class="modal-body">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur id, animi adipisci tempora repellat dolore ea, tenetur itaque quas facilis quos assumenda laborum dolores! Dolore eius explicabo facilis eum corrupti.</div>
+
+                                                <div class="container modal-footer">
+                                                    <button id="approve" class="btn btn-success" onclick=""> Approve</button>
+                                                    <button id="reject" class="btn btn-danger" onclick=""> Reject</button>
+                                                </div>
+
+                                            </div>
+                                        </div></td>
                                     <td>Resolved</td>
                                 </tr>
                                 <tr>
@@ -133,7 +206,21 @@
                                     <td>21/05/2018</td>
                                     <td>Susan Doe</td>
                                     <td>Maintenance</td>
-                                    <td>View Details</td>
+                                    <td><button id="btn-detail" class="tb-btn btn-info">View Details</button>
+                                        <div id="vd-modal" class="modal">
+                                            <div class="modal-content animate">
+                                                <div class="modal-header"><span class="close" title="Close Modal">&times;</span>
+                                                    <h3>Maintenance Request Details</h3>
+                                                </div>
+                                                <div class="modal-body">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur id, animi adipisci tempora repellat dolore ea, tenetur itaque quas facilis quos assumenda laborum dolores! Dolore eius explicabo facilis eum corrupti.</div>
+
+                                                <div class="container modal-footer">
+                                                    <button id="approve" class="btn btn-success" onclick=""> Approve</button>
+                                                    <button id="reject" class="btn btn-danger" onclick=""> Reject</button>
+                                                </div>
+
+                                            </div>
+                                        </div></td>
                                     <td>Resolved</td>
                                 </tr>
                             </tbody>
@@ -143,7 +230,7 @@
                 </div>
 
             </div>
-            
+
             <footer class="footer">
                 <p><strong>Created with &hearts; by:</strong> Antony Denis | | Andela Bootcamp 28</p>
             </footer>
@@ -152,5 +239,6 @@
 
     </div>
 
+    <script type="text/javascript" src="main.js"></script>
 </body>
 </html>

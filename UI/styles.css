@@ -38,6 +38,8 @@ body {
 .btn {
     padding: 14px 20px;
     margin: 8px 0px;
+    border: none;
+    cursor: pointer;
 }
 
 .btn:hover {
@@ -54,7 +56,7 @@ body {
 }
 
 span {
-    display: inline;
+    
 }
 
 
@@ -144,7 +146,7 @@ table {
 }
 
 .table-striped tr:nth-child(even) {
-    background-color: rgba(201, 76, 76, 0.03);
+    background-color: rgba(201, 76, 76,0.03);
 
 }
 
@@ -159,8 +161,7 @@ th {
 }
 
 tr:hover {
-    background-color: #fff1f1;
-
+    background-color: aliceblue;
 }
 
 .float-right {
@@ -169,7 +170,7 @@ tr:hover {
 
 .flex-container {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row nowrap;
 }
 
 .flex-sidebar {
@@ -250,4 +251,91 @@ hr {
 
 .main-content {
     min-height: 600px;
+}
+
+.tb-btn {
+    padding: 8px 6px;
+    margin: 8px 0px;
+    border: none;
+    width: 100%;
+}
+
+
+.btn-info {
+    background-color: #5bc0de;
+    color: #fff;
+    cursor: pointer;
+}
+.btn-info:hover{
+    opacity: 0.5;
+    padding: 10px 8px;
+}
+
+.modal {
+    display: none;
+    padding-top: 100px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0); /* fallback color*/
+    background-color: rgba(0,0,0, 0.4);
+    z-index: 1; /* sit on top*/
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto;
+    border: 1px solid #888;
+    width: 550px;
+}
+
+.close {
+    float: right;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s;
+}
+@keyframes animatezoom{
+    from{transform: scale(0)}
+        to{transform: scale(1)}
+}
+@-webkit-keyframes animatezoom{
+    from{transform: scale(0)}
+        to{transform: scale(1)}
+}
+
+.btn-danger {
+    background-color: #d9534f;
+    color: #fff;
+}
+
+.modal-footer {
+    background-color: #f1f1f1;
+}
+
+.btn-success {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+.modal-header {
+    padding: 16px;
+    background-color: #f1f1f1;
+}
+
+.modal-body {
+    padding: 12px 16px;
 }
