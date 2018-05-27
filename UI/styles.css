@@ -242,7 +242,7 @@ hr {
 }
 
 .title {
-    font-size: 26px;
+    font-size: 20px;
     font-weight: 600;
     box-sizing: content-box;
 }
@@ -258,6 +258,10 @@ hr {
     margin: 8px 0px;
     border: none;
     width: 100%;
+    cursor: pointer;
+}
+.tb-btn:hover{
+    opacity: 0.7;
 }
 
 
