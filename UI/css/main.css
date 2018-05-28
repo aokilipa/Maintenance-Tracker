@@ -1,6 +1,7 @@
 body, html {
     height: 100%;
     margin: 0;
+    font-family: Helvetica, Arial;
 }
 
 ul {
@@ -14,12 +15,13 @@ ul {
 }
 
 .wrapper {
-    min-height: 100%;
     height: auto !important;
     height: 100%;
     margin: 0 auto -20px;
     background-color: #c94c4c;
     padding: 16px;
+    display: flex;
+    flex-flow: row wrap;
 }
 
 .frm-input {
@@ -58,8 +60,8 @@ span {
 
 .center {
     margin: 100px auto;
-    width: 35%;
-    padding: 10px;
+    width: 600px;
+    padding: 26px;
     border: none;
     text-align: center;
 }
