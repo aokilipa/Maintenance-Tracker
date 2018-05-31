@@ -8,6 +8,6 @@ api = Api(api_bp)
 
 #Route
 api.add_resource(Hello, '/','/Hello')
-api.add_resource(RequestResource, '/user/request','/user/request/')
-api.add_resource(Request, '/user/request/<int:req_id>','/user/request/<int:req_id>/' )
+api.add_resource(RequestResource, '/user/request','/user/request/', endpoint ="requests")
+api.add_resource(Request, '/user/request/<int:req_id>','/user/request/<int:req_id>/', endpoint ="request" )
 
