@@ -56,3 +56,12 @@ class Request(Resource):
             if (req_id == _request['id']):
                 return _request, 200
         return "request not found", 404
+    
+    """Modify a request"""
+    def put(self, req_id):
+        json_data = request.get_json(force=True)
+        for _request in dtrequest:
+            if (req_id == _request['id']):
+                _request.update(json_data)
+                return {"status":"success", "data": json_data }, 201
+        return "Request not found", 404
