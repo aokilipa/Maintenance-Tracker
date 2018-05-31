@@ -1,5 +1,5 @@
-from flask_restful import Resource
-from flask import jsonify
+from flask_restful import Resource, reqparse
+from flask import json, request
 
 #creating dtrequest list with dictionary to simulate data store
 #using datastructure to simulate data store
@@ -37,13 +37,22 @@ dtrequest = [
 class RequestResource(Resource):
     """Get all request"""
     def get(self):     
-        return dtrequest
+        return dtrequest, 200
+
+    """create new request"""
+    def post(self):
+        json_data = request.get_json(force=True)
+        if not json_data:
+            return {'message': 'No input data provided'}, 400
+        dtrequest.append(json_data)
+        return {"status":"success", "data": json_data }, 201
+        
     
     
 class Request(Resource):
     """Get request by ID"""
     def get(self, req_id):
-        for request in dtrequest:
-            if (req_id == request['id']):
-                return request, 200
+        for _request in dtrequest:
+            if (req_id == _request['id']):
+                return _request, 200
         return "request not found", 404
