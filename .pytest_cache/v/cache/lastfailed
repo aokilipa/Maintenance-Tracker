@@ -1,5 +1,4 @@
 {
-  "tests/unit_test.py::ApiTest": true,
   "tests/unit_test.py::ApiTest::test_api_can_create_request": true,
   "tests/unit_test.py::ApiTest::test_api_can_get_all_requests": true,
   "tests/unit_test.py::ApiTest::test_api_can_get_request_by_id": true,
