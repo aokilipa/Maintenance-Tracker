@@ -13,7 +13,7 @@ import json
 import os
 import pytest
 
-from resources.User_request import dtrequest
+from resources.requests import dtrequest
 from run import create_app
 import config
 
