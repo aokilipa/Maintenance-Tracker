@@ -3,6 +3,5 @@
   "tests/unit_test.py::ApiTest::test_api_can_get_all_requests": true,
   "tests/unit_test.py::ApiTest::test_api_can_get_request_by_id": true,
   "tests/unit_test.py::ApiTest::test_api_request_can_be_modified": true,
-  "tests/unit_test.py::test_api_can_get_all_requests": true,
-  "tests/user_auth_test.py::TestingConfig::()": true
+  "tests/unit_test.py::test_api_can_get_all_requests": true
 }
