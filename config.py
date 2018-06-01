@@ -19,5 +19,5 @@ class DevelopmentConfig(Config):
 
 app_config = {
     'testing':TestingConfig,
-    'dvelopment':DevelopmentConfig,
+    'development':DevelopmentConfig,
 }
