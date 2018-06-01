@@ -1,4 +1,6 @@
 from flask import Flask
+import config
+
 
 def create_app(config_filename):
     app = Flask(__name__)
