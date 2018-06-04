@@ -10,6 +10,18 @@ def create_app(config_filename):
     from app import api_bp
     app.register_blueprint(api_bp, url_prefix='/api/v1')
 
+    @app.errorhandler(403)
+    def forbidden(error):
+        return "Your are not authorized to view this page", 403
+
+    @app.errorhandler(404)
+    def page_not_found(error):
+        return "The resource you are looking for is not available", 404
+
+    @app.errorhandler(500)
+    def internal_server_error(error):
+        return "The server encountered internal eror", 500
+
     return app
 
 if __name__=="__main__":
