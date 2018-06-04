@@ -12,12 +12,11 @@ import unittest
 import json
 import os
 import pytest
-import flask
 
-from app import api_bp
+from flask_restful import Api
 from resources.requests import dtrequest, RequestResource, Request
 from run import create_app
-from config import app_config
+from app import api_bp
 
 
 @pytest.mark.unittest
@@ -25,12 +24,14 @@ class ApiTest(unittest.TestCase):
     """ API endpoints test case"""
 
     def setUp(self):
-        """Declare test variables and initialize app."""
-        self.app = create_app(config_filename=app_config['testing'])
+        #Declare test variables and initialize app
+        self.app = create_app('testing')
         self.client = self.app.test_client
-        self.data = {"id": 1, "requestor":"Alicia Keys", "type": "maintenance",
-        "status":"Approved", "desc": "Description goes here"}
-    
+        self.req = { "id": 5, "requestor":"Test Doe", "email": "john@gmail.com",
+                "type": "maintenance", "status":"Approved", "desc": "Description goes here"}
+       
+        
+           
     def tearDown(self):
         pass
         
@@ -39,26 +40,32 @@ class ApiTest(unittest.TestCase):
 
     def test_api_can_get_all_requests(self):
         """Test api Get all the requests for a logged in user"""
-        result = RequestResource.get(self)
-        res = result[0]
-        self.assertEquals(res, dtrequest)
+        response = self.client().get('/api/v1/user/request')
+        self.assertTrue(response.status_code, 200)
         
 
     def test_api_can_get_request_by_id(self):
         """Test api can get a request for a logged in user"""
-        result = Request.get(self, 1)
-        res = result[0]
-        self.assertEquals(res['id'], 1)
+        res = self.client().get('/api/v1/user/request/1')
+        self.assertEquals(res.status_code, 200)
 
-    @pytest.mark.skip()
     def test_api_request_can_be_modified(self):
-        """Test api can modify a request"""
-        result = self.client.put() #Request.put(self,1)
-        self.assertEquals(res['status'], 'Resolved')
+        #Test api can modify a request
+        rv = self.client().post('/api/v1/user/request/', 
+                data = json.dumps(dict({"requestor":"sue doe"})))
+        self.assertEquals(rv.status_code, 200)
+
+        rv = self.client().put('/api/v1/user/request/1',
+                data = json.dumps(dict({"requestor":"Susan Sue"})))
+        self.assertEquals(rv.status_code, 201)
+        self.assertIn('Susan Sue', str(rv.data))
+
 
     def test_api_can_create_request(self):
         """Test api can create a request"""
-        pass
+        res = self.client().post('/api/v1/user/request/', data = json.dumps(dict(self.req)))
+        self.assertEquals(res.status_code, 201)
+        self.assertIn('Test Doe', str(res.data))
         
 
 #Make tests executable

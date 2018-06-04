@@ -1,49 +1,25 @@
 from flask_restful import Resource, reqparse
-from flask import json, request
+from flask import json, request, jsonify
+from models import dtrequest
 
-#creating dtrequest list with dictionary to simulate data store
-#using datastructure to simulate data store
-dtrequest = [
-    {
-        "id": 1,
-        "requestor":"Alicia Keys",
-        "type": "maintenance",
-        "status":"Approved",
-        "desc": "Description goes here"
-    },
-    {
-        "id": 2,
-        "requestor":"John Doe",
-        "type": "repair",
-        "status":"Pending",
-        "desc": "Description goes here"
-    },
-    {
-        "id": 3,
-        "requestor":"Susan Doe",
-        "type": "maintenance",
-        "status":"Approved",
-        "desc": "Description goes here"
-    },
-    {
-        "id": 4,
-        "requestor":"John Doe",
-        "type": "maintenance",
-        "status":"Approved",
-        "desc": "Description goes here"
-    }
-]
+
 
 class RequestResource(Resource):
+    
     """Get all request"""
-    def get(self):     
-        return dtrequest, 200
+    def get(self):    
+        #to set in utils
+        current_user = ["anto@gmail.com"]
+        res = [d for d in dtrequest if d["email"] in current_user]
+        return res
 
     """create new request"""
     def post(self):
         json_data = request.get_json(force=True)
         if not json_data:
             return {'message': 'No input data provided'}, 400
+        elif (len(json_data)!=len(dtrequest[0])):
+            return "Please enter all details"
         dtrequest.append(json_data)
         return {"status":"success", "data": json_data }, 201
         

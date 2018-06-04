@@ -3,5 +3,10 @@
   "tests/test_requests.py::ApiTest::test_api_can_get_all_requests",
   "tests/test_requests.py::ApiTest::test_api_can_get_request_by_id",
   "tests/test_requests.py::ApiTest::test_api_request_can_be_modified",
+  "tests/user_auth_test.py::UserTest::test_api_can_create_users",
+  "tests/user_auth_test.py::UserTest::test_api_can_delete_user",
+  "tests/user_auth_test.py::UserTest::test_api_can_get_all_users",
+  "tests/user_auth_test.py::UserTest::test_api_can_get_users_by_id",
+  "tests/user_auth_test.py::UserTest::test_api_users_can_be_modified",
   "tests/user_auth_test.py::UserTest::test_user_authentication"
 ]
