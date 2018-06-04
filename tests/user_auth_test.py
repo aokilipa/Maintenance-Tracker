@@ -16,6 +16,7 @@ class UserTest(unittest.TestCase):
         self.client = self.app.test_client
         self.ctx = self.app.test_request_context
         self.req = {  "id": 3,"fname": "Mary", "lname": "Doe", "email": "mary@gmail.com" }
+        self.modified = {  "id": 3,"fname": "Mary", "lname": "Doe", "email": "susansue@gmail.com" }
         
 
     @pytest.mark.skip("to be implemented afterwards")
@@ -41,21 +42,24 @@ class UserTest(unittest.TestCase):
         
 
     def test_api_can_get_users_by_id(self):
-        """Test api can get a users for a logged in user"""
-        res = self.client().get('/api/v1/user/1')
+        """Test api can get a users by id"""
+        rv = self.client().post('/api/v1/user/', 
+                data = json.dumps(dict(self.req)))
+        self.assertEquals(rv.status_code, 201)
+
+        res = self.client().get('/api/v1/user/3')
         self.assertEquals(res.status_code, 200)
 
     def test_api_users_can_be_modified(self):
         #Test api can modify a users
         rv = self.client().post('/api/v1/user/', 
-                data = json.dumps(dict({"email":"sue@gmail.com"})))
-        self.assertEquals(rv.status_code, 200)
-
-        rv = self.client().put('/api/v1/user/1',
-                data = json.dumps(dict({"email":"susansue@gmail.com"})))
+                data = json.dumps(dict(self.req)))
         self.assertEquals(rv.status_code, 201)
-        self.assertIn('susansue@gmail.com', str(rv.data))
 
+        res = self.client().put('/api/v1/user/3',
+                data = json.dumps(dict(self.modified)))
+        self.assertEquals(res.status_code, 201)
+        self.assertIn('susansue@gmail.com', str(res.data))
 
     def test_api_can_create_users(self):
         """Test api can create a users"""
