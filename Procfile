@@ -1,1 +1,1 @@
-web: gunicorn run:create_app('testing')
+web: gunicorn run:create_app('production')
