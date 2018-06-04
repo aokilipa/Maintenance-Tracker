@@ -1,36 +1,11 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, abort, g
 from flask_restful import Api,Resource, reqparse
+from flask_httpauth import HTTPBasicAuth
+from passlib.apps import custom_app_context as pass_context
+from models import dtlogin, dtusers
 
-dtusers = [
-    {
-        "id": 1,
-        "fname": "John", 
-        "lname": "Doe",
-        "email": "john@gmail.com", 
-        "username": "john@gmail.com" 
-    },
-    {
-        "id": 2,
-        "fname": "Susan", 
-        "lname": "Sue",
-        "email": "john@gmail.com", 
-        "username": "john@gmail.com" 
-    },
-    {
-        "id": 3,
-        "fname": "Mary", 
-        "lname": "Doe",
-        "email": "john@gmail.com", 
-        "username": "john@gmail.com" 
-    },
-    {
-        "id": 4,
-        "fname": "Anto", 
-        "lname": "Denis",
-        "email": "john@gmail.com", 
-        "username": "john@gmail.com" 
-    }
-]
+
+auth = HTTPBasicAuth()
 
 class UserResource(Resource):
     """get all registered users"""
@@ -74,5 +49,3 @@ class User(Resource):
                 dtusers[:]=[user for user in dtusers if not(uid == user.get('id'))]
                 return {"status":"Deleted successfuly", "data": user}, 201
         return "Record not found", 404
-        
-            
