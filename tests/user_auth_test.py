@@ -21,18 +21,7 @@ class UserTest(unittest.TestCase):
 
     @pytest.mark.skip("to be implemented afterwards")
     def test_user_authentication(self):
-        """Tests login and logout"""
-        json_data = request.get_json()
-        email = json_data['email']
-        password = json_data['password']
-        return jsonify(token={email, password})
-
-        with self.client() as c:
-            rv = c.post('/api/auth', json={
-            'username': 'flask', 'password': 'secret'
-            })
-            json_data = rv.get_json()
-        assert(json_data['email'], json_data['token'])
+      pass
     
     
     def test_api_can_get_all_users(self):
