@@ -7,7 +7,7 @@ implemented using data structures
 """
 
 import psycopg2
-from config import dbconfig, basedir
+from config import dbconfig, basedir, filename , section
 import os
 
 from flask import json, jsonify
@@ -15,17 +15,18 @@ from itsdangerous import (TimedJSONWebSignatureSerializer
                             as Serializer, BadSignature, SignatureExpired)
 
 
+
+
 def connect():
-    """connect to the postgresql server"""
+    """Test connection to the postgresql server"""
     conn = None
     try:
         #read conection parameters
-        #params =  dbconfig(basedir+'database.ini', 'postgresql')
-
+        params =  dbconfig(filename,section)
+        
         #connect to server
         print('Conecting to the PostgreSQL database...')
-        conn = psycopg2.connect(dbname='mtracker_db',user="antonio", password="pass.123") 
-
+        conn = psycopg2.connect(**params)
         #create a cursor
         cur = conn.cursor()
 

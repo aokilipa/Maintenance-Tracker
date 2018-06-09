@@ -70,6 +70,8 @@ def create_tables():
     
     return "Tables user, request and admin created succesfully"
         
+class User():
+    __tablename__ = "tb_users"
 
 if __name__ == '__main__':
     create_tables()

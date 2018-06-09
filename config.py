@@ -2,6 +2,9 @@ import os
 from configparser import ConfigParser
 
 basedir = os.path.abspath(os.path.dirname(__file__))
+section = "postgresql"
+filename = basedir+'/database.ini'
+
 
 class Config(object):
     """Parent config class"""
@@ -34,7 +37,7 @@ app_config = {
     'production': ProductionConfig,
 }
 
-def dbconfig(filename=basedir+'database.ini', section='postgresql'):
+def dbconfig(filename, section):
     #create a parser
     parser = ConfigParser()
     #read config file
@@ -46,6 +49,6 @@ def dbconfig(filename=basedir+'database.ini', section='postgresql'):
         params = parser.items(section)
         for param in params:
             db[param[0]] = param[1]
-        else:
-            raise Exception('section {0} not found in the {1} file'.format(section,filename))
-        return db
+    else:
+        raise Exception('section {0} not found in the {1} file'.format(section,filename))
+    return db
