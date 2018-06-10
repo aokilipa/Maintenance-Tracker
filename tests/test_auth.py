@@ -26,19 +26,28 @@ class AuthTest(unittest.TestCase):
     
 
     def test_encode_auth_token(self):
-        user = User(
+       """ 
+       user = UserAuth(
             email = 'test@gmail.com',
             password = 'test'
         )
-        
-    
-    def test_api_can_register_user(self):
-        """Test api can register a users"""
+        auth_token = user.encode_auth_token(user.id)
+        """
+
+    @pytest.mark.skip("to run after implementation")
+    def test_registration_endpoint(self):
+        """Test signup/register users endpoint"""
         res = self.client().post('/api/v1/auth/signup/', data = json.dumps(dict(self.reg)))
         self.assertEquals(res.status_code, 201)
         self.assertIn('mary', str(res.data))
     
-
+    @pytest.mark.skip("to run after implementation")
+    def test_login_endpoint(self):
+        """Test login endpoint"""
+        res = self.client().post('/api/v1/auth/login/', data = json.dumps(dict(self.reg)))
+        self.assertEquals(res.status_code,201)
+        
+    @pytest.mark.skip("to run after implementation")
     def test_user_authentication(self):
         """Tests login and logout"""
         json_data = request.get_json()
