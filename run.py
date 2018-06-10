@@ -1,14 +1,18 @@
 from flask import Flask
 import os
 from config import app_config
+from flask_bcrypt import Bcrypt
 
 
 def create_app(config_filename):
     app = Flask(__name__)
     app.config.from_object(app_config[config_filename])
+    #bcrypt = Bcrypt(app)
+
 
     from app import api_bp
     app.register_blueprint(api_bp, url_prefix='/api/v1')
+
 
     @app.errorhandler(403)
     def forbidden(error):
