@@ -1,6 +1,7 @@
 import os
 import psycopg2
-from models import connect
+from config import dbconfig, filename, section
+
 
 
 def create_tables():
@@ -47,8 +48,8 @@ def create_tables():
 
     conn = None
     try:
-        
-        conn = psycopg2.connect(dbname='mtracker_db',user="antonio", password="pass.123")
+        params = dbconfig(filename, section)
+        conn = psycopg2.connect(**params)
 
         #create cursor
         cur = conn.cursor()
@@ -61,6 +62,7 @@ def create_tables():
 
         #commit the changes
         conn.commit()
+        print("Tables Created Succesfully")
 
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)

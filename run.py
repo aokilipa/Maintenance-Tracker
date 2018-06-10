@@ -5,9 +5,12 @@ from flask_jwt_extended import (JWTManager, jwt_required,
                                 create_access_token,get_jwt_identity)
 
 
+
 def create_app(config_filename):
     app = Flask(__name__)
     app.config.from_object(app_config[config_filename])
+    #bcrypt = Bcrypt(app)
+
 
     #setup flask-jwt-extended extension
     app.config['JWT_SECRET_KEY'] = 'secret'
