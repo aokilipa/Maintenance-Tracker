@@ -9,6 +9,7 @@ implemented using data structures
 import psycopg2
 from config import dbconfig, basedir, filename , section
 import os
+import jwt
 
 from flask import json, jsonify
 from itsdangerous import (TimedJSONWebSignatureSerializer 
@@ -17,8 +18,10 @@ from itsdangerous import (TimedJSONWebSignatureSerializer
 
 
 
-def connect():
+
+def test_connection():
     """Test connection to the postgresql server"""
+
     conn = None
     try:
         #read conection parameters
@@ -146,4 +149,4 @@ class UserAuth(object):
         pass
 
 if __name__ == '__main__':
-    connect()
+    test_connection()

@@ -11,3 +11,4 @@ class User(object):
 
     def __init__(self, username, password ,created_on, firstname, lastname):
         pass
+

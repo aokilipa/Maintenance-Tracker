@@ -1,7 +1,9 @@
 from flask import Flask
 import os
 from config import app_config
-from flask_bcrypt import Bcrypt
+from flask_jwt_extended import (JWTManager, jwt_required,
+                                create_access_token,get_jwt_identity)
+
 
 
 def create_app(config_filename):
@@ -9,6 +11,10 @@ def create_app(config_filename):
     app.config.from_object(app_config[config_filename])
     #bcrypt = Bcrypt(app)
 
+
+    #setup flask-jwt-extended extension
+    app.config['JWT_SECRET_KEY'] = 'secret'
+    jwt = JWTManager(app)
 
     from app import api_bp
     app.register_blueprint(api_bp, url_prefix='/api/v1')
@@ -30,5 +36,6 @@ def create_app(config_filename):
 
 if __name__=="__main__":
     app = create_app("production")
+    jwt = JWTManager(app)
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
