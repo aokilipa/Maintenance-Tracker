@@ -1,8 +1,4 @@
 [
-  "tests/test_auth.py::AuthTest::test_encode_auth_token",
-  "tests/test_auth.py::AuthTest::test_login_endpoint",
-  "tests/test_auth.py::AuthTest::test_registration_endpoint",
-  "tests/test_auth.py::AuthTest::test_user_authentication",
   "tests/test_requests.py::ApiTest::test_api_can_create_request",
   "tests/test_requests.py::ApiTest::test_api_can_get_all_requests",
   "tests/test_requests.py::ApiTest::test_api_can_get_request_by_id",

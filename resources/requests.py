@@ -2,11 +2,13 @@ from flask_restful import Resource, reqparse
 from flask import json, request, jsonify
 from models import dtrequest
 
-
+from flask_jwt_extended import (create_access_token,create_refresh_token,
+jwt_required, jwt_refresh_token_required,get_jwt_identity, get_raw_jwt)
 
 class RequestResource(Resource):
     
     """Get all request"""
+    @jwt_required
     def get(self):    
         #to set in utils
         current_user = ["anto@gmail.com"]
