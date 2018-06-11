@@ -55,10 +55,10 @@ class ApiTest(unittest.TestCase):
                 data = json.dumps(dict({"requestor":"sue doe"})))
         self.assertEquals(rv.status_code, 200)
 
-        rv = self.client().put('/api/v1/user/request/1',
+        res = self.client().put('/api/v1/user/request/1',
                 data = json.dumps(dict({"requestor":"Susan Sue"})))
-        self.assertEquals(rv.status_code, 201)
-        self.assertIn('Susan Sue', str(rv.data))
+        self.assertEquals(rv.status_code, 200)
+        self.assertIn('Susan Sue', str(res.data))
 
 
     def test_api_can_create_request(self):
