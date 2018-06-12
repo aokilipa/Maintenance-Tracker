@@ -147,6 +147,61 @@ class UserAuth(object):
     @staticmethod
     def verify_auth_token(token):
         pass
+def find_by_username(username):
+    query = """SELECT username,password FROM tb_users WHERE username=(%s)"""
+    
+    conn = None
+    result = None
+    try:
+        params = dbconfig(filename, section)
+        conn = psycopg2.connect(**params)
+
+        cur = conn.cursor()
+        cur.execute(query,(username,))
+
+        result = cur.fetchone()
+        
+        #print(result)
+        
+        cur.close()
+
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+    finally:
+        if conn is not None:
+            conn.close()
+    return result
+
+def return_all():
+    query = """select array_to_json(array_agg(row_to_json(t))) from (  
+                SELECT * FROM tb_users) t"""
+    
+    conn = None
+    result = None
+
+    try:
+        params = dbconfig(filename, section)
+
+        conn = psycopg2.connect(**params)
+
+        cur = conn.cursor()
+        cur.execute(query)
+
+        result = cur.fetchall()
+
+        cur.close()
+
+
+    except (Exception, psycopg2.DatabaseError) as error:
+        print (error)
+    finally:
+        if conn is not None:
+            conn.close()
+    return result
+
+current_user = find_by_username("antokish@gmail.com")
 
 if __name__ == '__main__':
-    test_connection()
+    #test_connection()
+    current_user[0]
+    print(return_all())
