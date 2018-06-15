@@ -5,9 +5,9 @@ from flask_jwt_extended import JWTManager
 
 
 
-def create_app(config_filename):
+def create_app(config_name):
     app = Flask(__name__)
-    app.config.from_object(app_config[config_filename])
+    app.config.from_object(app_config[config_name])
     #bcrypt = Bcrypt(app)
 
 
@@ -34,7 +34,8 @@ def create_app(config_filename):
     return app
 
 if __name__=="__main__":
-    app = create_app("development")
+    config_name = os.getenv('APP_SETTINGS')
+    app = create_app(config_name)
     jwt = JWTManager(app)
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
