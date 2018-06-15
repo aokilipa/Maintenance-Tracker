@@ -1,0 +1,434 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Helvetica, Arial;
+}
+
+ul {
+    list-style-type: none;
+    padding-top: 12px;
+}
+
+.container {
+    padding: 16px;
+    background-color: transparent;
+}
+
+.wrapper {
+    background-color: #c94c4c;
+    height: 100%;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    font-family: monospace;
+}
+
+.frm-input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0px;
+    border: 1px solid #ccc;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.btn {
+    padding: 14px 20px;
+    margin: 8px 0px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+.btn-pink {
+    background-color: #c94c4c;
+    color: white;
+    width: 100%;
+    cursor: pointer;
+    border: none;
+
+}
+
+span {
+    color: #ccc;
+}
+
+
+.center {
+    width: 500px;
+    padding: 26px;
+    border: none;
+    text-align: center;
+    height: auto;
+    position: relative;
+    top: 10%;
+    margin: 0 auto;
+    
+}
+
+.text-light {
+    color: #797979;
+}
+
+a {
+    color: #c94c4c;
+}
+
+.con-shadow {
+    background-color: white;
+}
+
+
+
+.push {
+    height: 80px;
+}
+
+.footer {
+
+    position: relative;
+    display: block;
+    float: left;
+    box-sizing: border-box;
+    bottom: 0px;
+    width: 100%;
+    height: auto;
+    background-color: rgb(11, 16, 25);
+    color: white;
+    text-align: center;
+    padding: 10px;
+
+
+}
+
+.header {
+    height: 20px;
+}
+
+input.txt-center {
+    text-align: center;
+}
+
+.category {
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 0;
+    color: #9A9A9A;
+}
+
+.card {
+    border-radius: 6px;
+    box-shadow: 0 2px 2px rgba(204, 197, 185, 0.5);
+    background-color: #FFFFFF;
+    color: #252422;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.content {
+    padding: 15px 15px 10px 15px;
+    text-align: center;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-spacing: 0;
+    border-spacing: 0;
+}
+
+table {
+    display: table;
+    border-color: grey;
+    border-collapse: separate;
+}
+
+.table-striped tr:nth-child(even) {
+    background-color: rgba(201, 76, 76,0.03);
+
+}
+
+td {
+    padding: 8px;
+}
+
+th {
+    background-color: #c94c4c;
+    padding: 8px;
+    color: white;
+}
+
+tr:hover {
+    background-color: aliceblue;
+}
+
+.float-right {
+    float: right;
+}
+
+.flex-container {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.flex-sidebar {
+    flex-basis: 20%;
+    background-color: #00001a;
+    color: white;
+
+}
+
+.flex-content {
+    flex-basis: 80%;
+}
+
+
+li a {
+    display: block;
+    color: aliceblue;
+    padding: 8px 16px;
+    border-bottom-color: aliceblue;
+    border-width: 1px;
+    text-decoration: none;
+
+}
+
+li a:hover {
+    border-color: rgba(7, 28, 39, 0.39);
+    background-color: #4CAF50;
+}
+
+li a:active {
+    background-color: #4CAF50;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+
+hr {
+    margin: 16px 16px;
+    border-color: rgba(7, 28, 39, 0.39);
+}
+
+
+.flex-header {
+    padding: 16px;
+    background-color: #f3f3f3;
+    color: #666;
+}
+.flex-header span {
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.menu-header a {
+    text-decoration: none;
+}
+
+.menu-header a {
+    color: #777;
+    padding: 4px;
+}
+
+.menu-header a:hover {
+    color: white;
+}
+
+.menu-header {
+    float: right
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 600;
+    box-sizing: content-box;
+}
+
+
+
+.main-content {
+    min-height: 600px;
+}
+
+.tb-btn {
+    padding: 8px 6px;
+    margin: 8px 0px;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+}
+.tb-btn:hover{
+    opacity: 0.7;
+}
+
+
+.btn-info {
+    background-color: #5bc0de;
+    color: #fff;
+    cursor: pointer;
+}
+.btn-info:hover{
+    opacity: 0.5;
+    padding: 10px 8px;
+}
+
+.modal {
+    display: none;
+    padding-top: 100px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0); /* fallback color*/
+    background-color: rgba(0,0,0, 0.4);
+    z-index: 1; /* sit on top*/
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto;
+    border: 1px solid #888;
+    width: 550px;
+}
+
+.close {
+    float: right;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s;
+}
+@keyframes animatezoom{
+    from{transform: scale(0)}
+        to{transform: scale(1)}
+}
+@-webkit-keyframes animatezoom{
+    from{transform: scale(0)}
+        to{transform: scale(1)}
+}
+
+.btn-danger {
+    background-color: #d9534f;
+    color: #fff;
+}
+
+.modal-footer {
+    background-color: #f1f1f1;
+}
+
+.btn-success {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+.modal-header {
+    padding: 16px;
+    background-color: #f1f1f1;
+}
+
+.modal-body {
+    padding: 12px 16px;
+}
+
+.bgimg {
+    background-image: url("./img/background.jpg");
+    height: 100%;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 25px;
+}
+
+.topleft {
+    position: absolute;
+    top: 0;
+    left: 16px;
+}
+
+.middle {
+    position: relative;
+    top: 20%;
+    text-align: center;
+}
+
+.bottomleft {
+    bottom: 0;
+    position: absolute;
+    padding: 16px;
+}
+
+.overlay {
+    
+    background-color: #c94c4c;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.88;
+    color: #fff;
+}
+
+.btn-link {
+    border: 1px solid #fff;
+    color: white;
+    text-decoration: none;
+    padding: 14px;
+}
+
+.btn-md:hover {
+    background-color: rgb(0, 0, 0, 1);
+    padding: 16px;
+    border-color: rgb(0, 0, 0, 1);
+}
+
+.btn-right {
+    position: relative;
+    float: right;
+    top: 0;
+    margin: 8px 20px 0 0;
+    cursor: pointer;
+}
+.btn-right:hover{
+    background-color: white;
+    color: black;
+}
+
+.back {
+    top: 20px;
+    position: relative;
+    left: 16px;
+}
+
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+}
+
+
+img.avatar {
+    width: 50%;
+    height: 50%;
+}
+
+h3 {
+    margin-bottom: 0;
+}
