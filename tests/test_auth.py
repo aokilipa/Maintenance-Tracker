@@ -5,7 +5,7 @@ import psycopg2
 
 from flask import json, request, jsonify
 from run import create_app
-from tests.models import find_by_username, return_all, insert_to_db, create_tables
+from resources.models import find_by_username, return_all, insert_to_db
 
 
 @pytest.mark.unittest
@@ -15,7 +15,7 @@ class AuthTest(unittest.TestCase):
     def setUp(self):
         self.app = create_app('testing')
         self.client = self.app.test_client
-        self.reg =  { "username": "mary@gmail.com", "password": "test", "firstname": "Mary",
+        self.reg =  { "username": "susan@gmail.com", "password": "test", "firstname": "susan",
  	                    "lastname": "Wekesa" }
         self.login = {"username":"anto@gmail.com","password":"test"}
 

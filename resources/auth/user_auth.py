@@ -38,13 +38,16 @@ class UserSignup(Resource):
         created_on = datetime.now()
         
         current_user = find_by_username(username)
-
-        if current_user==username:
+        print("current user: %s",current_user)
+        if current_user[0]==username:
             return{"message":"user {} already exist".format(username)}
+        
 
 
         try:
+            
             insert_to_db(self, username, password, firstname,lastname,created_on)
+            
             access_token = create_access_token(identity=username)
             refresh_token = create_refresh_token(identity=username)
 

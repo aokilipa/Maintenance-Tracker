@@ -133,20 +133,6 @@ dtlogin = [
 
 ]
 
-"""To be implemented when intergrating with database"""
-class UserAuth(object):
-    def hash_password(self, pwd):
-        pass
-
-    def verify_password(self, pwd):
-        pass
-
-    def generate_auth_token(self, expiration=600):
-        pass
-
-    @staticmethod
-    def verify_auth_token(token):
-        pass
 def find_by_username(username):
     query = """SELECT username,password FROM tb_users WHERE username=(%s)"""
     
