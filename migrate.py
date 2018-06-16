@@ -15,6 +15,7 @@ def create_tables():
             firstname VARCHAR(50) NOT NULL,
             lastname VARCHAR(50) NOT NULL,
             password VARCHAR(255) NOT NULL,
+            role BOOL DEFAULT 'false',
             created_on TIMESTAMP NOT NULL,
             last_login TIMESTAMP
         )
@@ -24,24 +25,12 @@ def create_tables():
         DROP TABLE IF EXISTS tb_request;
         CREATE TABLE tb_request(
             request_id SERIAL PRIMARY KEY,
-            requestor VARCHAR(255) NOT NULL,
-            email VARCHAR(100) NOT NULL,
+            requestor INTEGER NOT NULL,
             type VARCHAR(50) NOT NULL,
             status VARCHAR(50) NOT NULL,
             description TEXT,
-            created_on TIMESTAMP NOT NULL
-        )
-        """
-        ,
-        """
-        DROP TABLE IF EXISTS tb_admin;
-        CREATE TABLE tb_admin(
-            admin_id SERIAL PRIMARY KEY,
-            username VARCHAR(100) UNIQUE NOT NULL,
-            fullname VARCHAR(100) NOT NULL,
-            password VARCHAR(255) NOT NULL,
             created_on TIMESTAMP NOT NULL,
-            last_login TIMESTAMP
+            FOREIGN KEY (requestor) REFERENCES tb_users(user_id)
         )
         """
     )

@@ -6,6 +6,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 filename = basedir+'/database.ini'
 section = "postgresql"
 #DATABASE_URL = "postgresql://antonio:pass.123@localhost/mtracker_db"
+config_name = os.getenv('APP_SETTINGS')
 
 class Config(object):
     """Parent config class"""
@@ -42,7 +43,7 @@ app_config = {
 }
 
 def DATABASE_URL():
-    if app_config == 'testing':
+    if config_name == 'testing':
         return "postgresql://antonio:pass.123@/test_db"
     return "postgresql://antonio:pass.123@/mtracker_db"
 

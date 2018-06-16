@@ -9,11 +9,11 @@ from flask_bcrypt import Bcrypt
 
 app = Flask(__name__)
 
-def insert_to_db(self, username, password, firstname, lastname, created_on):
+def insert_to_db(self, username, password, firstname, lastname, role, created_on):
     """insert a new user into database"""
 
-    query = """INSERT INTO tb_users (username, password, firstname, lastname, created_on)
-                VALUES(%s,%s,%s,%s,%s)"""
+    query = """INSERT INTO tb_users (username, password, firstname, lastname,role, created_on)
+                VALUES(%s,%s,%s,%s,%s,%s)"""
     
     conn = None
     user_id = None
@@ -23,7 +23,7 @@ def insert_to_db(self, username, password, firstname, lastname, created_on):
 
         cur = conn.cursor()
         cur.execute(query,(username, password, firstname, 
-                    lastname, created_on,))
+                    lastname,role, created_on,))
 
                
         conn.commit()

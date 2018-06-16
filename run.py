@@ -3,7 +3,7 @@ import os
 from config import app_config
 from flask_jwt_extended import JWTManager
 
-
+config_name = os.getenv('APP_SETTINGS')
 
 def create_app(config_name):
     app = Flask(__name__)
@@ -34,7 +34,7 @@ def create_app(config_name):
     return app
 
 if __name__=="__main__":
-    config_name = os.getenv('APP_SETTINGS')
+    #config_name = os.getenv('APP_SETTINGS')
     app = create_app(config_name)
     jwt = JWTManager(app)
     port = int(os.environ.get('PORT', 5000))
