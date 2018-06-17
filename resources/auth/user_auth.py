@@ -22,21 +22,21 @@ parser.add_argument('password', help= 'This field cannot be blank', required = T
 
 class UserSignup(Resource):
     
-    parser.add_argument('firstname', help = 'This field cannot be blank', required = True)
-    parser.add_argument('lastname', help = 'This field cannot be blank', required = True)
-    parser.add_argument('role',help = 'if admin', required = False)
       
     #register user
     def post(self):
         #parser.add_argument('firstname', help = 'This field cannot be blank', required = True)
+        parser.add_argument('firstname', help = 'This field cannot be blank', required = True)
+        parser.add_argument('lastname', help = 'This field cannot be blank', required = True)
+        parser.add_argument('role',help = 'if admin', required = False)
 
-        data = parser.parse_args()
+        self.data = parser.parse_args()
 
-        username = data['username']
-        password = hash_password(data['password']) 
-        firstname = data['firstname']
-        lastname = data['lastname']
-        role = data['role']
+        username = self.data['username']
+        password = hash_password(self.data['password']) 
+        firstname = self.data['firstname']
+        lastname = self.data['lastname']
+        role = self.data['role']
         created_on = datetime.now()
         
         current_user = find_by_username(username)
@@ -64,7 +64,7 @@ class UserSignup(Resource):
             return{"message":"error registering user"}
         
         
-        return{"data":data}
+        return{"data":self.data}
 
 class UserLogin(Resource):
 
