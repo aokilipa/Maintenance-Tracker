@@ -11,6 +11,7 @@ class TestTestingConfig(TestCase):
     def test_app_is_testing(self):
         self.assertTrue(self.app.config['DEBUG'] is True)
         self.assertTrue(self.app.config['TESTING'] is True)
+        self.assertTrue(self.app.config['DATABASE_URL'] == "postgresql://antonio:pass.123@localhost/test_db")
 
 
 class TestDevelopmentConfig(TestCase):
@@ -18,6 +19,7 @@ class TestDevelopmentConfig(TestCase):
     
     def test_app_is_development(self):
         self.assertTrue(self.app.config['DEBUG'] is True)
+        self.assertTrue(self.app.config['DATABASE_URL'] == "postgresql://antonio:pass.123@localhost/mtracker_db")
     
 
 

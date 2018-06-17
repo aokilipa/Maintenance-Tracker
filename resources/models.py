@@ -1,37 +1,36 @@
-import flask
+from flask import Flask
 import datetime
 import psycopg2
 
 from passlib.hash import pbkdf2_sha256 as sha256
 from run import create_app
-from config import dbconfig, filename , section
+from config import dbconfig, filename ,section, app_config, DATABASE_URL
 from flask_bcrypt import Bcrypt
 
-#app = create_app('production')
-#bcrypt = Bcrypt(app)
+app = Flask(__name__)
 
-def insert_to_db(self, username, password, firstname, lastname, created_on):
+def insert_to_db(self, username, password, firstname, lastname, role, created_on):
     """insert a new user into database"""
 
-    query = """INSERT INTO tb_users (username, password, firstname, lastname, created_on)
-                VALUES(%s,%s,%s,%s,%s)"""
+    query = """INSERT INTO tb_users (username, password, firstname, lastname,role, created_on)
+                VALUES(%s,%s,%s,%s,%s,%s)"""
     
     conn = None
     user_id = None
     try:
-        params = dbconfig(filename, section)
-        conn = psycopg2.connect(**params)
+        #params = dbconfig(filename, section)
+        conn = psycopg2.connect(DATABASE_URL())
 
         cur = conn.cursor()
         cur.execute(query,(username, password, firstname, 
-                    lastname, created_on,))
+                    lastname,role, created_on,))
 
                
         conn.commit()
         user_id = cur.fetchone()[0]
         cur.close()
     except (Exception, psycopg2.DatabaseError) as error:
-        print(error)
+        return error
     finally:
         if conn is not None:
             conn.close()
@@ -43,8 +42,8 @@ def find_by_username(username):
     conn = None
     result = None
     try:
-        params = dbconfig(filename, section)
-        conn = psycopg2.connect(**params)
+        #params = dbconfig(filename, section)
+        conn = psycopg2.connect(DATABASE_URL())
 
         cur = conn.cursor()
         cur.execute(query,(username,))
@@ -70,9 +69,9 @@ def return_all():
     result = None
 
     try:
-        params = dbconfig(filename, section)
+        #params = dbconfig(filename, section)
 
-        conn = psycopg2.connect(**params)
+        conn = psycopg2.connect(DATABASE_URL())
 
         cur = conn.cursor()
         cur.execute(query)

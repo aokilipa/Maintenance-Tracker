@@ -1,5 +1,17 @@
 [
+  "tests/test_auth.py::AuthTest::test_encode_auth_token",
+  "tests/test_auth.py::AuthTest::test_login_endpoint",
+  "tests/test_auth.py::AuthTest::test_registration_endpoint",
   "tests/test_config.py::TestTestingConfig::test_app_is_testing",
   "tests/test_config.py::TestDevelopmentConfig::test_app_is_development",
-  "tests/test_config.py::TestProductionConfig::test_app_is_production"
+  "tests/test_config.py::TestProductionConfig::test_app_is_production",
+  "tests/test_requests.py::ApiTest::test_api_can_create_request",
+  "tests/test_requests.py::ApiTest::test_api_can_get_all_requests",
+  "tests/test_requests.py::ApiTest::test_api_can_get_request_by_id",
+  "tests/test_requests.py::ApiTest::test_api_request_can_be_modified",
+  "tests/test_users.py::UserTest::test_api_can_create_users",
+  "tests/test_users.py::UserTest::test_api_can_delete_user",
+  "tests/test_users.py::UserTest::test_api_can_get_all_users",
+  "tests/test_users.py::UserTest::test_api_can_get_users_by_id",
+  "tests/test_users.py::UserTest::test_api_users_can_be_modified"
 ]

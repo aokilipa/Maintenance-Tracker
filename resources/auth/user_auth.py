@@ -22,29 +22,35 @@ parser.add_argument('password', help= 'This field cannot be blank', required = T
 
 class UserSignup(Resource):
     
-    
+      
     #register user
     def post(self):
+        #parser.add_argument('firstname', help = 'This field cannot be blank', required = True)
         parser.add_argument('firstname', help = 'This field cannot be blank', required = True)
         parser.add_argument('lastname', help = 'This field cannot be blank', required = True)
-        #parser.add_argument('firstname', help = 'This field cannot be blank', required = True)
+        parser.add_argument('role',help = 'if admin', required = False)
 
-        data = parser.parse_args()
+        self.data = parser.parse_args()
 
-        username = data['username']
-        password = hash_password(data['password']) 
-        firstname = data['firstname']
-        lastname = data['lastname']
+        username = self.data['username']
+        password = hash_password(self.data['password']) 
+        firstname = self.data['firstname']
+        lastname = self.data['lastname']
+        role = self.data['role']
         created_on = datetime.now()
         
         current_user = find_by_username(username)
 
-        if current_user==username:
+        
+        if current_user is None:
+            pass
+        elif current_user[0]==username:
             return{"message":"user {} already exist".format(username)}
-
-
+        
         try:
-            insert_to_db(self, username, password, firstname,lastname,created_on)
+            
+            insert_to_db(self, username, password, firstname,lastname,role, created_on)
+            
             access_token = create_access_token(identity=username)
             refresh_token = create_refresh_token(identity=username)
 
@@ -58,12 +64,11 @@ class UserSignup(Resource):
             return{"message":"error registering user"}
         
         
-        return{"data":data}
+        return{"data":self.data}
 
 class UserLogin(Resource):
-    parser.add_argument('username', help = 'Please fill in the username', required = True)
-    parser.add_argument('password', help= 'This field cannot be blank', required = True)
 
+   
     #login user
     def post(self):
         self.data = parser.parse_args()
@@ -73,7 +78,7 @@ class UserLogin(Resource):
 
         current_user = find_by_username(username)
 
-        if not current_user:
+        if current_user is None:
             return {"message": "user {} doesn\'t exist".format(username)}
         
         if verify_hash(password, current_user[1]):

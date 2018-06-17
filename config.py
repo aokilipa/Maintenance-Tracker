@@ -2,9 +2,11 @@ import os
 from configparser import ConfigParser
 
 basedir = os.path.abspath(os.path.dirname(__file__))
-section = "postgresql"
-filename = basedir+'/database.ini'
 
+filename = basedir+'/database.ini'
+section = "postgresql"
+#DATABASE_URL = "postgresql://antonio:pass.123@localhost/mtracker_db"
+config_name = os.getenv('APP_SETTINGS')
 
 class Config(object):
     """Parent config class"""
@@ -16,10 +18,13 @@ class TestingConfig(Config):
     """Config for testing"""
     TESTING = True
     DEBUG = True
+    section = "postgrestest"
+    DATABASE_URL = "postgresql://antonio:pass.123@localhost/test_db"
 
 class DevelopmentConfig(Config):
     """Config for development"""
     DEBUG = True
+    DATABASE_URL = "postgresql://antonio:pass.123@localhost/mtracker_db"
 
 class StagingConfig(Config):
     """Config for Staging"""
@@ -36,6 +41,11 @@ app_config = {
     'staging': StagingConfig,
     'production': ProductionConfig,
 }
+
+def DATABASE_URL():
+    if config_name == 'testing':
+        return "postgresql://antonio:pass.123@/test_db"
+    return "postgresql://antonio:pass.123@/mtracker_db"
 
 def dbconfig(filename, section):
     #create a parser
