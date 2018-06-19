@@ -4,7 +4,6 @@ from datetime import datetime
 
 
 from flask import Flask, abort, request , jsonify, g, json
-from flask_httpauth import HTTPBasicAuth
 from flask_restful import Api, Resource, reqparse
 from resources.models import (insert_to_db, find_by_username, hash_password, verify_hash,
                             return_all)
@@ -13,7 +12,6 @@ from flask_jwt_extended import (create_access_token,create_refresh_token,
 jwt_required, jwt_refresh_token_required,get_jwt_identity, get_raw_jwt)
 
 
-auth = HTTPBasicAuth
 
 #parsing incoming data
 parser = reqparse.RequestParser()
@@ -44,7 +42,7 @@ class UserSignup(Resource):
         
         if current_user is None:
             pass
-        elif current_user[0]==username:
+        elif current_user[1]==username:
             return{"message":"user {} already exist".format(username)}
         
         try:
@@ -81,7 +79,7 @@ class UserLogin(Resource):
         if current_user is None:
             return {"message": "user {} doesn\'t exist".format(username)}
         
-        if verify_hash(password, current_user[1]):
+        if verify_hash(password, current_user[2]):
             access_token = create_access_token(identity=username)
             refresh_token = create_refresh_token(identity=username)
             return {

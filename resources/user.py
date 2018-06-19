@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request, abort, g
 from flask_restful import Api,Resource, reqparse
 from flask_httpauth import HTTPBasicAuth
 from passlib.apps import custom_app_context as pass_context
-from models import dtlogin, dtusers
+
 
 from flask_jwt_extended import (create_access_token,create_refresh_token,
 jwt_required, jwt_refresh_token_required,get_jwt_identity, get_raw_jwt)
