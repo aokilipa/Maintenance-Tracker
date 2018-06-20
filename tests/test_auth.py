@@ -15,9 +15,11 @@ class AuthTest(unittest.TestCase):
     def setUp(self):
         self.app = create_app(config_name="testing")
         self.client = self.app.test_client
-        self.reg =  { "username": "susan@gmail.com", "password": "test", "firstname": "susan",
- 	                    "lastname": "Wekesa" }
-        self.login = {"username":"anto@gmail.com","password":"test"}
+        self.reg =  { "username": "anto@gmail.com", "password": "test", "firstname": "antony",
+ 	                    "lastname": "okilipa","role":"yes" }
+        self.login_data = { "username": "anto@gmail.com",
+                            "password": "test"
+                            }
 
         #with self.app.app_context():
            
@@ -40,12 +42,26 @@ class AuthTest(unittest.TestCase):
         """Test signup/register users endpoint"""
         res = self.client().post('/api/v1/auth/signup', data = self.reg)
         self.assertEquals(res.status_code, 200)
-        #self.assertIn('mary', str(res.data))
+        self.assertIn('anto@gmail.com', str(res.data))
     
-    
+
     def test_login_endpoint(self):
         """Test login endpoint"""
-        res = self.client().post('/api/v1/auth/login', data = self.login)
+        res = self.client().post('/api/v1/auth/login', 
+                                data = json.dumps(dict({ 
+                                    "username": "anto@gmail.com",
+                                    "password": "test"
+                            })))
         self.assertEquals(res.status_code,200)
-        
-   
+        self.assertIn('anto@gmail.com',str(res.data))
+
+    def test_logout_access(self):
+        pass
+    
+    def test_logout_refresh(self):
+        res = self.client().post('/api/v1/auth/logout/refresh')
+        self.assertEquals(res.status_code, 200)
+    
+    def test_token_refresh(self):
+        res = self.client().post('/api/v1/auth/token/refresh')
+        self.assertEquals(res.status_code, 200)

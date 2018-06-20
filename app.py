@@ -3,7 +3,7 @@ from flask_restful import Api
 from resources.Hello import Hello
 from resources.requests import (RequestResource, Request,ApproveRequest,DisapproveRequest,
                                 ResolveRequest,GetAllRequest)
-from resources.user import UserResource, User
+#from resources.user import UserResource, User
 
 from resources.auth.user_auth import (UserSignup, UserLogin, UserLogoutAccess, UserLogoutRefresh, 
                                     UserSignup, TokenRefresh, AllUsers)
@@ -15,8 +15,8 @@ api = Api(api_bp)
 api.add_resource(Hello, '/','/Hello')
 api.add_resource(RequestResource, '/users/requests','/users/requests/', endpoint ="requests")
 api.add_resource(Request, '/users/requests/<int:req_id>','/users/requests/<int:req_id>/', endpoint ="request" )
-api.add_resource(UserResource, '/users','/users/')
-api.add_resource(User, '/users/<int:uid>','/users/<int:uid>/')
+#api.add_resource(UserResource, '/users','/users/')
+#api.add_resource(User, '/users/<int:uid>','/users/<int:uid>/')
 
 #authentication endpoints
 api.add_resource(UserSignup, '/auth/signup', '/auth/signup/')

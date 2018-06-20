@@ -69,7 +69,7 @@ class UserLogin(Resource):
    
     #login user
     def post(self):
-        self.data = parser.parse_args()
+        self.data = request.get_json(force=True)
 
         username = self.data['username']
         password = self.data['password']
