@@ -3,7 +3,7 @@ import os
 from config import app_config
 from flask_jwt_extended import JWTManager
 
-config_name = os.getenv('APP_SETTINGS')
+config_name = 'testing'#os.getenv('APP_SETTINGS')
 
 def create_app(config_name):
     app = Flask(__name__)

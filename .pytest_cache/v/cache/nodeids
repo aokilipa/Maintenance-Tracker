@@ -1,7 +1,10 @@
 [
   "tests/test_auth.py::AuthTest::test_encode_auth_token",
   "tests/test_auth.py::AuthTest::test_login_endpoint",
+  "tests/test_auth.py::AuthTest::test_logout_access",
+  "tests/test_auth.py::AuthTest::test_logout_refresh",
   "tests/test_auth.py::AuthTest::test_registration_endpoint",
+  "tests/test_auth.py::AuthTest::test_token_refresh",
   "tests/test_config.py::TestTestingConfig::test_app_is_testing",
   "tests/test_config.py::TestDevelopmentConfig::test_app_is_development",
   "tests/test_config.py::TestProductionConfig::test_app_is_production",

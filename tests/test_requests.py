@@ -13,10 +13,7 @@ import json
 import os
 import pytest
 
-from flask_restful import Api
-from resources.requests import dtrequest, RequestResource, Request
 from run import create_app
-from app import api_bp
 
 
 @pytest.mark.unittest
@@ -27,10 +24,29 @@ class ApiTest(unittest.TestCase):
         #Declare test variables and initialize app
         self.app = create_app('testing')
         self.client = self.app.test_client
-        self.req = { "id": 5, "requestor":"Test Doe", "email": "john@gmail.com",
-                "type": "maintenance", "status":"Approved", "desc": "Description goes here"}
-       
-        
+        self.req ={
+            "requestor":1,
+	        "request_type": "Repair",
+	        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ipsam possimus cumque libero ipsa vero odio.",
+	        "status":"Pending"
+            }
+    def signup(self):
+        user_details ={
+ 	        'username': "anto@mail.com",
+ 	        'password': "test",
+ 	        'firstname': "anto",
+ 	        'lastname': "Doe",
+ 	        'role': "t"
+            }
+        return self.client().post('/api/v1/auth/signup', data=user_details)
+	
+    def login(self):
+        login_details = {
+            "username":"anto@mail.com",
+            "password":"test"
+        }
+        return self.client().post('/api/v1/auth/login', 
+                                data=json.dumps(dict(login_details)))
            
     def tearDown(self):
         pass
@@ -40,32 +56,55 @@ class ApiTest(unittest.TestCase):
 
     def test_api_can_get_all_requests(self):
         """Test api Get all the requests for a logged in user"""
-        response = self.client().get('/api/v1/user/request')
+        self.signup()
+        res = self.login()
+        access_token = json.loads(res.data.decode())['access_token']
+        response = self.client().get('/api/v1/users/requests',
+                        headers=dict(Authorization="Bearer "+ access_token))
         self.assertTrue(response.status_code, 200)
+        
         
 
     def test_api_can_get_request_by_id(self):
         """Test api can get a request for a logged in user"""
-        res = self.client().get('/api/v1/user/request/1')
+        self.signup()
+        res = self.login()
+        access_token = json.loads(res.data.decode())['access_token']
+        res = self.client().get('/api/v1/users/requests/1',
+                                headers=dict(Authorization="Bearer "+ access_token))
         self.assertEquals(res.status_code, 200)
 
     def test_api_request_can_be_modified(self):
         #Test api can modify a request
-        rv = self.client().post('/api/v1/user/request/', 
-                data = json.dumps(dict({"requestor":"sue doe"})))
-        self.assertEquals(rv.status_code, 200)
+        self.signup()
+        res = self.login()
+        
+        access_token = json.loads(res.data.decode())['access_token']
 
-        res = self.client().put('/api/v1/user/request/1',
-                data = json.dumps(dict({"requestor":"Susan Sue"})))
-        self.assertEquals(rv.status_code, 200)
-        self.assertIn('Susan Sue', str(res.data))
+        rv = self.client().post('/api/v1/users/requests/',
+                headers=dict(Authorization="Bearer "+ access_token), 
+                data = self.req)
+        self.assertEquals(rv.status_code, 201)
+
+        res = self.client().put('/api/v1/users/requests/1',
+                headers=dict(Authorization="Bearer "+ access_token),
+                data = json.dumps(dict({"request_type":"repair", "description":"This is an updated description"})))
+        self.assertEquals(rv.status_code, 201)
+        self.assertIn('Record updated succesfully', str(res.data))
 
 
     def test_api_can_create_request(self):
         """Test api can create a request"""
-        res = self.client().post('/api/v1/user/request/', data = json.dumps(dict(self.req)))
+        self.signup()
+        result = self.login()
+        access_token = json.loads(result.data.decode())['access_token']
+
+        res = self.client().post(
+            '/api/v1/users/requests/',
+            headers=dict(Authorization="Bearer " + access_token), 
+            data = self.req)
         self.assertEquals(res.status_code, 201)
-        self.assertIn('Test Doe', str(res.data))
+        self.assertIn('Data saved succesfully', str(res.data))
         
 
 #Make tests executable

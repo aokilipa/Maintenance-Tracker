@@ -26,10 +26,11 @@ def create_tables():
         CREATE TABLE tb_request(
             request_id SERIAL PRIMARY KEY,
             requestor INTEGER NOT NULL,
-            type VARCHAR(50) NOT NULL,
-            status VARCHAR(50) NOT NULL,
+            request_type VARCHAR(50) NOT NULL,
+            status VARCHAR(50) DEFAULT 'Pending',
             description TEXT,
             created_on TIMESTAMP NOT NULL,
+            last_modified TIMESTAMP,
             FOREIGN KEY (requestor) REFERENCES tb_users(user_id)
         )
         """
